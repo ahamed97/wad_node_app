@@ -24,8 +24,6 @@ module.exports.getById =  (req,res) => {
 }
 
 module.exports.post =  (req,res) => {
-    // return  res.status(200).json(req.body);
-
     try{
         const { name, desc, image , price} = req.body;
 
