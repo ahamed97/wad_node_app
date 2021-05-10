@@ -1,4 +1,5 @@
 const User = require('../models/User');
+
 const dotenv = require('dotenv');
 const bcrypt = require('bcrypt');
 dotenv.config();
@@ -14,7 +15,7 @@ module.exports.register = (req,res) => {
         if(user) return res.status(400).json({message: 'User already exists'});
     });
         const newUser = new User({ name, email, password , address , phone})
-
+        newItem.save()
         //hash password
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(password, salt, (err, hash) => {
