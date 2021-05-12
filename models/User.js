@@ -1,34 +1,29 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const validator = require('validator');
 
 const UserSchema = new Schema({
     name: {
-        type: String,
-        required: true
+        type: String
     },
     email: {
-        type: String,
-       required: [true,'Please enter an email'],
-        unique: true,
-        validate: [validator.isEmail, 'Please enter a valid email']
+        type: String
     },
     password: {
-        type: String,
-        required: [true, 'Please enter a valid password'],
-        minlength: [8, 'Minimum password length must be 8 characters']
+        type: String
     },
     register_date: {
         type: Date,
         default: Date.now
     },
     address: {
-        type: String,
+        type: String
     },
     phone: {
-        type: String,
+        type: String
+    },
+    is_admin: {
+        type: Boolean
     }
 })
 
-module.exports = User = mongoose.model('user',UserSchema);
-
+module.exports = User = mongoose.model('user', UserSchema);
