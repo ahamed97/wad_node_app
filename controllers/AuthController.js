@@ -30,7 +30,7 @@ module.exports.register = (req, res) => {
             newUser.save()
                 .then(user => {
                     jwt.sign({ user }, process.env.SECRET, (err, token) => {
-                        res.json({
+                        res.status(200).json({
                             token: token,
                             user: {
                                 id: user._id,
