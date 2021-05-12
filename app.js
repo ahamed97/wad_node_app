@@ -31,7 +31,7 @@ const verifyToken = require("./middlewares/auth");
 const authRoutes = require('./routes/auth')
 const adminRoutes = require('./routes/admin')
 const customerRoutes = require('./routes/customer')
-app.use('/api',adminRoutes)
+app.use('/api',verifyToken,adminRoutes)
 app.use('/api',authRoutes)
 app.use('/api',verifyToken,customerRoutes)
 
