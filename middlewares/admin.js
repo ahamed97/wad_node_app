@@ -9,7 +9,6 @@ module.exports = function verifyIsAdmin(req, res, next) {
   if (typeof bearerToken !== 'undefined') {
     const bearer = bearerToken.split(' ');
     const token = bearer[1];
-    req.token = token;
     var decodedToken = jwt.verify(token, process.env.SECRET);
     if(decodedToken.user.is_admin == false){
         return res.status(403).json({ message: 'Admin can only have access to this routes' });
