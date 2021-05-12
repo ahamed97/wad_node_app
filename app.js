@@ -28,12 +28,14 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 
 const verifyToken = require("./middlewares/auth");
+const verifyIsAdmin = require("./middlewares/admin");
 const authRoutes = require('./routes/auth')
 const adminRoutes = require('./routes/admin')
 const customerRoutes = require('./routes/customer')
-app.use('/api',verifyToken,adminRoutes)
+
+app.use('/api/admin',verifyToken,verifyIsAdmin,adminRoutes)
 app.use('/api',authRoutes)
-app.use('/api',verifyToken,customerRoutes)
+app.use('/api/customer',verifyToken,customerRoutes)
 
 
 app.get('/', (req, res) => {
