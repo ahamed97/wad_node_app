@@ -27,8 +27,9 @@ app.use(express.json())
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 const authRoutes = require('./routes/auth')
+const adminRoutes = require('./routes/admin')
 app.use('/api',authRoutes);
-
+app.use('/api',adminRoutes)
 app.get('/', (req, res) => {
   res.status(200).send('initial setup')
 })
