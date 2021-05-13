@@ -6,12 +6,27 @@ const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 const swaggerOptions = {
   swaggerDefinition: {
-    components: {},
+    components: {
+   
+    },
+    securityDefinitions: {
+      bearerAuth: {
+        type: 'apiKey',
+        name: 'authorization',
+        scheme: 'bearer',
+        bearerFormat: 'JWT'
+      },
+    },
+    security: [{
+      bearerAuth: []
+    }],
     info: {
       title: "Shopping Cart API",
       version: '1.0.0',
-    },
+    }
+    
   },
+  
   apis: ["./routes/*.js"],
 };
 
@@ -23,7 +38,6 @@ const dbUrl = process.env.DB_URL
 const app = express()
 app.use(cors())
 app.use(express.json())
-
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 
