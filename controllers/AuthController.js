@@ -192,13 +192,13 @@ module.exports.passwordUpdate = async (req, res) => {
                 .json({ message: "No user found" });
         }
 
-        bcrypt.compare(req.body.old_password, user.passowrd, function(err, result) {
-             //hash password
-             bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.compare(req.body.old_password, user.passowrd, function (err, result) {
+            //hash password
+            bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(req.body.new_password, salt, (err, hash) => {
                     if (err) throw err;
-                    User.findOneAndUpdate({_id : decoded.user._id}, {$set:{password:hash}}, {upsert: true}, function(err, doc) {
-                        if (err) return res.send(500, {error: err});
+                    User.findOneAndUpdate({ _id: decoded.user._id }, { $set: { password: hash } }, { upsert: true }, function (err, doc) {
+                        if (err) return res.send(500, { error: err });
                         return res.status(200).json({ message: "reset successfully" });
                     });
                 })
