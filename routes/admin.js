@@ -47,7 +47,7 @@ const Schema = mongoose.Schema;
  *       200:
  *         description: The list of the products
  */
-router.get('/admin/products', itemController.getAll);
+router.get('/products', itemController.getAll);
 
 /**
  * @swagger
@@ -68,7 +68,7 @@ router.get('/admin/products', itemController.getAll);
  *       404:
  *         description: The product was not found
  */
-router.get('/admin/products/:id', itemController.getById);
+router.get('/products/:id', itemController.getById);
 
 
 /**
@@ -90,7 +90,7 @@ router.get('/admin/products/:id', itemController.getById);
  *       404:
  *         description: The product was not found
  */
-router.post('/admin/products', itemController.post);
+router.post('/products', itemController.post);
 
 
 /**
@@ -118,7 +118,7 @@ router.post('/admin/products', itemController.post);
  *       404:
  *         description: The product was not found
  */
-router.put('/admin/products/:id', itemController.put);
+router.put('/products/:id', itemController.put);
 
 /**
  * @swagger
@@ -139,6 +139,6 @@ router.put('/admin/products/:id', itemController.put);
  *       404:
  *         description: The product was not found
  */
-router.delete('/admin/products/:id', itemController.delete);
+router.delete('/products/:id', itemController.delete);
 
 module.exports = router;
