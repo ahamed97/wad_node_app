@@ -46,10 +46,14 @@ const verifyIsAdmin = require("./middlewares/admin");
 const authRoutes = require('./routes/auth')
 const adminRoutes = require('./routes/admin')
 const customerRoutes = require('./routes/customer')
+const socialRoutes = require('./routes/social')
+const orderRoutes = require('./routes/order')
 
 app.use('/api/admin',verifyToken,verifyIsAdmin,adminRoutes)
 app.use('/api',authRoutes)
-app.use('/api/customer',verifyToken,customerRoutes)
+app.use('/api/customer', verifyToken, customerRoutes)
+app.use('/api/social', socialRoutes)
+app.use('/api/customer/orders',verifyToken,orderRoutes)
 
 
 app.get('/', (req, res) => {
