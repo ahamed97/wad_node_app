@@ -55,7 +55,7 @@ module.exports.register = (req, res) => {
                     })
             })
         })
-    } catch ($e) {
+    } catch (e) {
         return res
             .status(500)
             .json({ message: "Internal Server Error" + e });
@@ -103,7 +103,7 @@ module.exports.login = (req, res) => {
                     }
                     )
             })
-    } catch ($e) {
+    } catch (e) {
         return res
             .status(500)
             .json({ message: "Internal Server Error" + e });
