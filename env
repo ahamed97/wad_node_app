@@ -1,0 +1,4 @@
+# .example.env
+PORT=4000
+DB_URL=mongodb+srv://root:root@123@cluster0.tc9vr.mongodb.net/wad_node_app?retryWrites=true&w=majority
+SECRET=123456
