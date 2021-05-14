@@ -4,6 +4,8 @@ const cors = require("cors");
 const mongoose = require("mongoose")
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
+const loggerJob = require("./middlewares/logger"); 
+
 const swaggerOptions = {
   swaggerDefinition: {
     components: {
@@ -51,10 +53,10 @@ const orderRoutes = require('./routes/order')
 
 app.use('/api/admin',verifyToken,verifyIsAdmin,adminRoutes)
 app.use('/api',authRoutes)
-app.use('/api/customer', verifyToken, customerRoutes)
+app.use('/api/customer', customerRoutes)
 app.use('/api/social', socialRoutes)
-app.use('/api/customer/orders',verifyToken,orderRoutes)
-
+app.use('/api/customer/orders',verifyToken,orderRoutes) 
+app.use(loggerJob);
 
 app.get('/', (req, res) => {
   res.status(200).send('initial setup')
