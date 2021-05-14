@@ -34,7 +34,7 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
-dotenv.config({path:'env'});
+dotenv.config();
 const port = process.env.PORT
 const dbUrl = process.env.DB_URL
 const app = express()
